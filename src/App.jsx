@@ -5,6 +5,8 @@ import SomeText from "./sometext/SomeText";
 import MyCounter from "./mycounter/MyCounter";
 import SumNumbers from "./sumNumbers/sumNumbers";
 import Form from "./MyInput/MyInput";
+import TaskApp from "./todoApp/todoApp";
+import ParentComponent from "./ParentComp";
 const ThemeContext = createContext(null);
 
 function App() {
@@ -45,10 +47,13 @@ function App() {
               <Link to="/sum">Сумма чисел</Link>
             </li>
             <li>
+              <Link to="/input">Focus</Link>
+            </li>
+            <li>
               <Link to="/todo">Todo</Link>
             </li>
             <li>
-              <button onClick={changeTheme}>Смена темы</button>
+              <Link to="/parent">Parent</Link>
             </li>
           </ul>
         </nav>
@@ -57,10 +62,12 @@ function App() {
         <Routes>
           <Route path="/counter" element={<MyCounter />} />
           <Route path="/sum" element={<SumNumbers />} />
-          <Route path="/todo" element={<Form />} />
+          <Route path="/input" element={<Form />} />
+          <Route path="/todo" element={<TaskApp />} />
+          <Route path="/parent" element={<ParentComponent />} />
           <Route
             path="/"
-            element={<SomeText title={titleText} className={theme} />}
+            element={<SomeText changeTheme={changeTheme} title={titleText} className={theme} />}
           />
         </Routes>
       </ThemeContext.Provider>
